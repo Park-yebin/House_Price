@@ -25,3 +25,15 @@ sns.distplot(df_train['SalePrice'])
 # skewness and kurtosis
 print("Skewness: %f" % df_train['SalePrice'].skew())
 print("Kurtosis: %f" % df_train['SalePrice'].kurt())
+
+# Check relationship with numerical variables
+# scatter plot-grlivarea/saleprice
+var='GrLivArea'
+data=pd.concat([df_train['SalePrice'], df_train[var]], axis=1)
+data.plot.scatter(x=var, y='SalePrice', ylim=(0, 800000))
+
+# scatter plot-totalbsmtsf/saleprcie
+var='TotalBsmtSF'
+data=pd.concat([df_train['SalePrice'], df_train[var]], axis=1)
+data.plot.scatter(x=var, y='SalePrice', ylim=(0, 800000))
+
