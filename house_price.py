@@ -9,7 +9,7 @@ import warnings
 
 warnings.filterwarnings('ignore')
 # %matplotlib inline
-
+# https://www.kaggle.com/code/pmarcelino/comprehensive-data-exploration-with-python
 # bring data
 df_train=pd.read_csv('House_Price/data/train.csv')
 
@@ -31,9 +31,29 @@ print("Kurtosis: %f" % df_train['SalePrice'].kurt())
 var='GrLivArea'
 data=pd.concat([df_train['SalePrice'], df_train[var]], axis=1)
 data.plot.scatter(x=var, y='SalePrice', ylim=(0, 800000))
+# plt.show()
 
 # scatter plot-totalbsmtsf/saleprcie
 var='TotalBsmtSF'
 data=pd.concat([df_train['SalePrice'], df_train[var]], axis=1)
 data.plot.scatter(x=var, y='SalePrice', ylim=(0, 800000))
+# plt.show()
+
+# Check relationship with categorical features
+# box plot-overallqual/saleprice
+var='OverallQual'
+data=pd.concat([df_train['SalePrice'], df_train[var]], axis=1)
+f, ax=plt.subplots(figsize=(8,6))
+fig=sns.boxplot(x=var, y='SalePrice', data=data)
+fig.axis(ymin=0, ymax=800000)
+# plt.show()
+
+# box plot-yearbuilt/saleprice
+var='YearBuilt'
+data=pd.concat([df_train['SalePrice'], df_train[var]], axis=1)
+f, ax=plt.subplots(figsize=(16,8))
+fig=sns.boxplot(x=var, y='SalePrice', data=data)
+fig.axis(ymin=0, ymax=800000)
+plt.xticks(rotation=90)
+# plt.show()
 
